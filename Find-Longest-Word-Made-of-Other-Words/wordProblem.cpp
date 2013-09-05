@@ -73,6 +73,20 @@ bool Hash::find(const char* str){
 bool stringCompare(string,string);
 bool buildWord(string, bool,Hash);
 
+bool stringCompare(string left, string right){
+//	return  left.length() > right.length();
+	 if(left.length()>right.length())return true;
+	if( (left.length()==right.length() ) && left<right)return true;
+
+	return false;
+}
+
+
+bool lessLength (const string& s1, const string& s2)
+{
+    return s1.length() > s2.length();
+}
+
 int main(int argc, char *argv[])
 {
 	string lineBuffer;
@@ -92,13 +106,14 @@ int main(int argc, char *argv[])
 	for(int i=0;i<wordArray.size();i++)
 		strHash.insert((char*)&wordArray.at(i)[0]);
 	//sort vector by string length
-	sort( wordArray.begin(), wordArray.end(), stringCompare);
+	sort(wordArray.begin(),wordArray.end());
+	sort(wordArray.begin(),wordArray.end(), stringCompare);
 	for(int i=0;i<wordArray.size();i++){
 		//check whether this word is made up of other words
 		if(buildWord(wordArray.at(i), true, strHash)){
 			count++;
 			//only print first 2 longest word made up of other words
-			if(count<4)	
+			if(count<3)	
 				cout<<wordArray.at(i)<<endl;
 		}
 	}
@@ -110,7 +125,7 @@ int main(int argc, char *argv[])
 bool buildWord(string str, bool original, Hash strHash){
 	if(strHash.find((char*)&str[0])&&!original)
 		return true;
-	for(int i=1;i<=str.length();i++){
+	for(int i=1;i<str.length();i++){
 		string left=str.substr(0,i);
 		string right=str.substr(i,str.length()-i);
 		if(strHash.find((char*)&left[0])&&buildWord(right, false, strHash))
@@ -120,8 +135,3 @@ bool buildWord(string str, bool original, Hash strHash){
 }
 
 // a function to sort strings by length
-bool stringCompare( string left, string right ){
-	if(left.length() > right.length() )
-		return true;
-   return false;
-}
