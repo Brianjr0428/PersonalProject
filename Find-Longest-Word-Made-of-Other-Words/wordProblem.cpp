@@ -104,7 +104,6 @@ int main(int argc, char *argv[])
 	}
 	//printf how many of the words in the list can be constructed of other words in the list
 	cout<<"There are "<<count<<" words that can be constructed of other words in the list"<<endl;
-
 	return 0;
 }
 
