@@ -70,8 +70,9 @@ bool Hash::find(const char* str){
     return false;
 }
 
+// a function to sort strings by length
 bool stringCompare(string left, string right){
-	 if(left.length()>right.length())return true;
+	if(left.length()>right.length())return true;
 	if( (left.length()==right.length() ) && left<right)return true;
 
 	return false;
@@ -125,4 +126,4 @@ bool buildWord(string str, bool original, Hash strHash){
 	return false;
 }
 
-// a function to sort strings by length
+
