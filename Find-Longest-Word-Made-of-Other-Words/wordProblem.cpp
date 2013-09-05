@@ -70,22 +70,13 @@ bool Hash::find(const char* str){
     return false;
 }
 
-bool stringCompare(string,string);
-bool buildWord(string, bool,Hash);
-
 bool stringCompare(string left, string right){
-//	return  left.length() > right.length();
 	 if(left.length()>right.length())return true;
 	if( (left.length()==right.length() ) && left<right)return true;
 
 	return false;
 }
-
-
-bool lessLength (const string& s1, const string& s2)
-{
-    return s1.length() > s2.length();
-}
+bool buildWord(string, bool,Hash);
 
 int main(int argc, char *argv[])
 {
