@@ -11,7 +11,6 @@ const int hashSize = 20000;
 const int nodeSize = 200000;
 using namespace std;
 
-
 // make a Node struct
 struct Node{
     char word[wordSize];
